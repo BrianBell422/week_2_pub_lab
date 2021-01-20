@@ -3,3 +3,14 @@ class Customer:
         self.name = name
         self.wallet = wallet
         self.drunkenness = drunkenness
+
+#Increase drunkenness
+
+
+#Decrease drunkenness
+
+
+#Increase wallet
+
+
+#Decrease wallet
