@@ -25,7 +25,7 @@ class TestPub(unittest.TestCase):
         self.assertEqual(self.drink_1, drink)
 
     def test_can_customer_afford_item(self):
-        customer = Customer("John", 100, 0)
+        customer = Customer("John", 20, 100, 0)
         self.assertEqual(True, self.pub.can_customer_afford_item(customer, self.drink_1))
 
     def test_add_money_to_till(self):
@@ -36,12 +36,33 @@ class TestPub(unittest.TestCase):
         self.pub.remove_money_from_till(10)
         self.assertEqual(90, self.pub.till)
 
-    def test_sell_drink_to_customer(self):
-        customer = Customer("John", 100, 0)
+    def test_check_age_pass(self):
+        customer = Customer("John", 20, 100, 0)
+        self.assertEqual(True, self.pub.check_age(customer))
+
+    def test_check_age_fail(self):
+        customer = Customer("John", 10, 100, 0)
+        self.assertEqual(False, self.pub.check_age(customer))
+
+    def test_sell_drink_to_customer_can_afford(self):
+        customer = Customer("John", 20, 100, 0)
         self.pub.sell_drink_to_customer(customer, "beer")
         self.assertEqual(95, customer.wallet)
         self.assertEqual(105, self.pub.till)
 
+    def test_sell_drink_to_customer_can_afford_too_young(self):
+        customer = Customer("John", 10, 100, 0)
+        self.pub.sell_drink_to_customer(customer, "beer")
+        self.assertEqual(100, customer.wallet)
+        self.assertEqual(100, self.pub.till)
 
+    def test_sell_drink_to_customer_cannot_afford(self):
+        customer = Customer("John", 20, 4, 0)
+        self.pub.sell_drink_to_customer(customer, "beer")
+        self.assertEqual(4, customer.wallet)
+        self.assertEqual(100, self.pub.till)
 
-
+    def test_increase_drunkenness(self):
+        customer = Customer("John", 20, 100, 0)
+        self.pub.sell_drink_to_customer(customer, "beer")
+        self.assertEqual(1, customer.drunkenness)

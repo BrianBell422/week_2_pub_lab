@@ -1,6 +1,7 @@
 class Customer:
-    def __init__(self, name, wallet, drunkenness):
+    def __init__(self, name, age, wallet, drunkenness):
         self.name = name
+        self.age = age
         self.wallet = wallet
         self.drunkenness = drunkenness
 
