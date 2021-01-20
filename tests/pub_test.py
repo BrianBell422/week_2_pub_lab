@@ -67,3 +67,13 @@ class TestPub(unittest.TestCase):
         customer = Customer("John", 20, 100, 0)
         self.pub.sell_drink_to_customer(customer, "beer")
         self.assertEqual(1, customer.drunkenness)
+
+
+
+########### Not working yet, need to add 'sell food' methods referenced below to the customer class
+    # def test_sell_food_to_customer_can_afford(self):
+    #     customer = Customer("John", 20, 100, 1)
+    #     self.pub.sell_food_to_customer(customer, "chips")
+    #     self.assertEqual(96, customer.wallet)
+    #     self.assertEqual(104, self.pub.till)
+    #     self.assertEqual(0, customer.drunkenness)
