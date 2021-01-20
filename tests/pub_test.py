@@ -24,3 +24,24 @@ class TestPub(unittest.TestCase):
         drink = self.pub.find_drink("beer")
         self.assertEqual(self.drink_1, drink)
 
+    def test_can_customer_afford_item(self):
+        customer = Customer("John", 100, 0)
+        self.assertEqual(True, self.pub.can_customer_afford_item(customer, self.drink_1))
+
+    def test_add_money_to_till(self):
+        self.pub.add_money_to_till(10)
+        self.assertEqual(110, self.pub.till)
+
+    def test_remove_money_from_till(self):
+        self.pub.remove_money_from_till(10)
+        self.assertEqual(90, self.pub.till)
+
+    def test_sell_drink_to_customer(self):
+        customer = Customer("John", 100, 0)
+        self.pub.sell_drink_to_customer(customer, "beer")
+        self.assertEqual(95, customer.wallet)
+        self.assertEqual(105, self.pub.till)
+
+
+
+

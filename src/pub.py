@@ -7,19 +7,29 @@ class Pub:
     def number_of_drinks(self):
         return len(self.drinks)
 
-#Customer gives drink name
     def find_drink(self, drink_name_to_find):
         for drink in self.drinks:
             if drink.name == drink_name_to_find:
                 return drink
 
-#Pub checks customer can afford drink
+    def can_customer_afford_item(self, customer, item):
+        if customer.wallet >= item.price:
+            return True
+        else: return False
+
+    def add_money_to_till(self, money):
+        self.till += money
+
+    def remove_money_from_till(self, money):
+        self.till -= money
+
+    def sell_drink_to_customer(self, customer, drink_name):
+        drink = self.find_drink(drink_name)
+        if self.can_customer_afford_item(customer, drink):
+            customer.decrease_wallet(drink.price)
+            self.add_money_to_till(drink.price)
 
 
-#Pub removes money from cust wallet
-
-
-#Pub adds money to till
 
 
 #Pub gives drink to customer(customer, drink name)

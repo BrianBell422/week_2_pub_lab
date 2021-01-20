@@ -4,13 +4,15 @@ class Customer:
         self.wallet = wallet
         self.drunkenness = drunkenness
 
-#Increase drunkenness
+    def increase_drunkenness(self, drink):
+        self.drunkenness += drink.alcohol_level
 
+    def decrease_drunkenness(self, drink):
+        self.drunkenness -= drink.alcohol_level
 
-#Decrease drunkenness
+    def increase_wallet(self, money):
+        self.wallet += money
 
+    def decrease_wallet(self, money):
+        self.wallet -= money
 
-#Increase wallet
-
-
-#Decrease wallet

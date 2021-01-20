@@ -1,6 +1,8 @@
 import unittest
 
+from src.pub import Pub
 from src.drink import Drink
+from src.customer import Customer
 
 class TestDrink(unittest.TestCase):
     def setUp(self):
@@ -14,3 +16,4 @@ class TestDrink(unittest.TestCase):
 
     def test_drink_alcohol_level(self):
         self.assertEqual = (1, self.drink.alcohol_level)
+
